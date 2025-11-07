@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { X } from "lucide-react";
+import { supabase } from "../lib/supabase";
 
 interface WaitlistModalProps {
   isOpen: boolean;
@@ -18,19 +19,41 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      // Send the data to your Supabase table
+      const { error } = await supabase.from("waitlist_signups").insert({
+        first_name: firstName,
+        email: email,
+        user_agent: navigator.userAgent,
+      });
 
-    setIsSubmitted(true);
-    setIsLoading(false);
+      if (error) {
+        // Handle duplicate or general errors gracefully
+        alert(
+          error.message.includes("duplicate")
+            ? "You're already on the list!"
+            : "Something went wrong. Please try again."
+        );
+        setIsLoading(false);
+        return;
+      }
 
-    // Reset after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setEmail("");
-      setFirstName("");
-      onClose();
-    }, 3000);
+      // ✅ Success — show confirmation
+      setIsSubmitted(true);
+      setIsLoading(false);
+
+      // Reset after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setEmail("");
+        setFirstName("");
+        onClose();
+      }, 3000);
+    } catch (err) {
+      console.error("Supabase error:", err);
+      alert("Network error. Please try again later.");
+      setIsLoading(false);
+    }
   };
 
   return (
