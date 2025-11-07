@@ -6,10 +6,6 @@ import { Navigation } from "./components/Navigation";
 import { PCOSRiseChart } from "./components/PCOSRiseChart";
 import { ContactForm } from "./components/ContactForm";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
-import vaultScreenshot from "figma:asset/8c78ab607d18e2f89f72ee5475dbbcf35bda6c76.png";
-import feedScreenshot from "figma:asset/a97eec691da94c2d9740a56598723fff27762d6c.png";
-import marketplaceScreenshot from "figma:asset/ad49bcdce0bb4b81a8d171a3e5760ef0304d46cb.png";
-import consultScreenshot from "figma:asset/39419e665ad0b23787202e01b6bcfea85f810952.png";
 import {
   Sparkles,
   Leaf,
