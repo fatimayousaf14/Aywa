@@ -106,7 +106,11 @@ export default function App() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <CustomButton size="lg" variant="primary">
+            <CustomButton
+              size="lg"
+              variant="primary"
+              onClick={() => (window.location.href = "/waitlist")}
+            >
               Get Early Access
             </CustomButton>
             <CustomButton size="lg" variant="ghost">
@@ -843,7 +847,11 @@ export default function App() {
             />
           </div>
 
-          <CustomButton size="lg" variant="warmth">
+          <CustomButton
+            size="lg"
+            variant="warmth"
+            onClick={() => (window.location.href = "/waitlist")}
+          >
             Begin Your Journey
           </CustomButton>
         </div>
@@ -918,21 +926,27 @@ export default function App() {
             </p>
 
             <nav className="flex flex-wrap justify-center gap-10 mb-12">
-              {["About", "Features", "Waitlist", "Contact"].map((link) => (
-                <a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
-                  className="hover:text-[#CBBBA0] transition-colors"
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: "0.9375rem",
-                    color: "#6E6A5B",
-                    letterSpacing: "0.025em",
-                  }}
-                >
-                  {link}
-                </a>
-              ))}
+              {["About", "Features", "Waitlist", "Contact"].map((link) => {
+                const isWaitlist = link === "Waitlist";
+                const href = isWaitlist
+                  ? "/waitlist"
+                  : `#${link.toLowerCase()}`;
+                return (
+                  <a
+                    key={link}
+                    href={href}
+                    className="hover:text-[#CBBBA0] transition-colors"
+                    style={{
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: "0.9375rem",
+                      color: "#6E6A5B",
+                      letterSpacing: "0.025em",
+                    }}
+                  >
+                    {link}
+                  </a>
+                );
+              })}
             </nav>
 
             <div className="flex justify-center gap-8 mb-12">
