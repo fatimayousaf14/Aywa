@@ -510,7 +510,7 @@ export default function App() {
               <div className="order-2 lg:order-1">
                 <div className="relative aspect-[9/16] max-w-[320px] mx-auto rounded-3xl overflow-hidden shadow-cinematic-lg">
                   <img
-                    src="/public/images/feed.png"
+                    src="/images/feed.png"
                     alt="Feed Screen - Strength Training for Insulin Resistance"
                     className="w-full h-full object-cover"
                   />
@@ -616,7 +616,7 @@ export default function App() {
 
               <div className="relative aspect-[9/16] max-w-[320px] mx-auto rounded-3xl overflow-hidden shadow-cinematic-lg">
                 <img
-                  src="/public/images/vault.png"
+                  src="/images/vault.png"
                   alt="Medical Vault App Interface"
                   className="w-full h-full object-cover"
                 />
@@ -642,7 +642,7 @@ export default function App() {
                     }}
                   />
                   <img
-                    src="/public/images/market.png"
+                    src="/images/market.png"
                     alt="AYWA Marketplace - Curated wellness products"
                     className="w-full h-full object-contain"
                   />
@@ -762,7 +762,7 @@ export default function App() {
                   }}
                 />
                 <img
-                  src="/public/images/consultation.png"
+                  src="/images/consultation.png"
                   alt="AYWA Consultations - Connect with PCOS specialists"
                   className="w-full h-full object-contain"
                 />
