@@ -5,7 +5,9 @@ import { StatCard } from "./components/StatCard";
 import { Navigation } from "./components/Navigation";
 import { PCOSRiseChart } from "./components/PCOSRiseChart";
 import { ContactForm } from "./components/ContactForm";
+import { WaitlistModal } from "./components/WaitlistModal";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
+
 import {
   Sparkles,
   Leaf,
@@ -23,9 +25,15 @@ import {
 } from "lucide-react";
 
 export default function App() {
+  const [isWaitlistOpen, setIsWaitlistOpen] = React.useState(false);
+
   return (
     <div className="min-h-screen" style={{ background: "#EAE4DB" }}>
-      <Navigation />
+      <Navigation onWaitlistClick={() => setIsWaitlistOpen(true)} />
+      <WaitlistModal
+        isOpen={isWaitlistOpen}
+        onClose={() => setIsWaitlistOpen(false)}
+      />
 
       {/* Hero Section - Warm, Grounded Femininity with Sunrise Tones */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden warm-light">
@@ -109,7 +117,7 @@ export default function App() {
             <CustomButton
               size="lg"
               variant="primary"
-              onClick={() => (window.location.href = "/waitlist")}
+              onClick={() => setIsWaitlistOpen(true)}
             >
               Get Early Access
             </CustomButton>
@@ -502,7 +510,7 @@ export default function App() {
               <div className="order-2 lg:order-1">
                 <div className="relative aspect-[9/16] max-w-[320px] mx-auto rounded-3xl overflow-hidden shadow-cinematic-lg">
                   <img
-                    src="/images/feed.png"
+                    src="/public/images/feed.png"
                     alt="Feed Screen - Strength Training for Insulin Resistance"
                     className="w-full h-full object-cover"
                   />
@@ -608,7 +616,7 @@ export default function App() {
 
               <div className="relative aspect-[9/16] max-w-[320px] mx-auto rounded-3xl overflow-hidden shadow-cinematic-lg">
                 <img
-                  src="/images/vault.png"
+                  src="/public/images/vault.png"
                   alt="Medical Vault App Interface"
                   className="w-full h-full object-cover"
                 />
@@ -634,7 +642,7 @@ export default function App() {
                     }}
                   />
                   <img
-                    src="/images/market.png"
+                    src="/public/images/market.png"
                     alt="AYWA Marketplace - Curated wellness products"
                     className="w-full h-full object-contain"
                   />
@@ -754,7 +762,7 @@ export default function App() {
                   }}
                 />
                 <img
-                  src="/images/consultation.png"
+                  src="/public/images/consultation.png"
                   alt="AYWA Consultations - Connect with PCOS specialists"
                   className="w-full h-full object-contain"
                 />
@@ -850,7 +858,7 @@ export default function App() {
           <CustomButton
             size="lg"
             variant="warmth"
-            onClick={() => (window.location.href = "/waitlist")}
+            onClick={() => setIsWaitlistOpen(true)}
           >
             Begin Your Journey
           </CustomButton>
@@ -926,27 +934,21 @@ export default function App() {
             </p>
 
             <nav className="flex flex-wrap justify-center gap-10 mb-12">
-              {["About", "Features", "Waitlist", "Contact"].map((link) => {
-                const isWaitlist = link === "Waitlist";
-                const href = isWaitlist
-                  ? "/waitlist"
-                  : `#${link.toLowerCase()}`;
-                return (
-                  <a
-                    key={link}
-                    href={href}
-                    className="hover:text-[#CBBBA0] transition-colors"
-                    style={{
-                      fontFamily: "'Inter', sans-serif",
-                      fontSize: "0.9375rem",
-                      color: "#6E6A5B",
-                      letterSpacing: "0.025em",
-                    }}
-                  >
-                    {link}
-                  </a>
-                );
-              })}
+              {["About", "Features", "Waitlist", "Contact"].map((link) => (
+                <a
+                  key={link}
+                  href={`#${link.toLowerCase()}`}
+                  className="hover:text-[#CBBBA0] transition-colors"
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "0.9375rem",
+                    color: "#6E6A5B",
+                    letterSpacing: "0.025em",
+                  }}
+                >
+                  {link}
+                </a>
+              ))}
             </nav>
 
             <div className="flex justify-center gap-8 mb-12">
