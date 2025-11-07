@@ -498,7 +498,7 @@ export default function App() {
               <div className="order-2 lg:order-1">
                 <div className="relative aspect-[9/16] max-w-[320px] mx-auto rounded-3xl overflow-hidden shadow-cinematic-lg">
                   <img
-                    src="/public/images/feed.png"
+                    src="/images/feed.png"
                     alt="Feed Screen - Strength Training for Insulin Resistance"
                     className="w-full h-full object-cover"
                   />
