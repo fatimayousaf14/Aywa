@@ -15,6 +15,11 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
 
   if (!isOpen) return null;
 
+  console.log(
+    "Production build – Supabase URL:",
+    import.meta.env.VITE_SUPABASE_URL
+  );
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);

@@ -35,6 +35,10 @@ export function ContactForm() {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
+  console.log(
+    "Production build – Supabase URL:",
+    import.meta.env.VITE_SUPABASE_URL
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
